@@ -1,0 +1,17 @@
+.home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  min-height: 100vh;
+}
+
+.imageBox {
+  background: url(../../assets/login.jpg) no-repeat center center / cover;
+  border-radius: .25rem;
+}
+
+@media only screen and (max-width: 40rem) {
+  .home {
+    grid-template-columns: 1fr;
+  }
+}

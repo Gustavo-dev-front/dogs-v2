@@ -1,0 +1,27 @@
+.input label,
+.input input {
+  display: block;
+  width: 100%;
+
+}
+
+.input label {
+  margin-bottom: .5rem;
+}
+
+.input input {
+  padding: 1rem;
+  outline: none;
+  border: 1.5px solid transparent;
+  background-color: #eee;
+  border-radius: .25rem;
+  transition: .3s;
+  margin-bottom: 1rem;
+}
+
+.input input:focus,
+.input input:hover {
+  border: 1.5px solid #fb1;
+  box-shadow: 0 0 0 3px #ffeeaa;
+  background-color: #fff;
+}

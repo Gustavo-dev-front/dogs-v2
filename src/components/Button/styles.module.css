@@ -1,0 +1,16 @@
+.button {
+  padding: .5rem 1rem;
+  background-color: #fb1;
+  border: 2px solid transparent;
+  border-radius: 0.25rem;
+  outline: none;
+  cursor: pointer;
+  transition: .3s;
+  color: #764701;
+}
+
+.button:focus,
+.button:hover {
+  border: 2px solid #ffeeaa;
+  box-shadow: 0 0 0 2.5px #fb1;
+}
