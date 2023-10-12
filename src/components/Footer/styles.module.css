@@ -1,0 +1,10 @@
+.footer {
+  background-color: #fb1;
+  padding: 5rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}

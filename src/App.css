@@ -29,3 +29,7 @@ ul {
   max-width: 1200px;
   margin: auto;
 }
+
+main {
+  min-height: 100vh;
+}
