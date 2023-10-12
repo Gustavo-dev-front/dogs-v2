@@ -1,0 +1,23 @@
+.header {
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: auto
+}
+
+.container a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.container a:last-child::after {
+  content: url(../../assets/usuario.svg);
+}
