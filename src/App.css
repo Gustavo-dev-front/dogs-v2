@@ -34,3 +34,22 @@ main {
   margin: 6rem auto 2rem;
   padding: 0 1rem;
 }
+
+.error {
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  color: #f31;
+}
+
+.anime-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: anime-left .3s forwards;
+}
+
+@keyframes anime-left {
+  to {
+    opacity: initial;
+    transform: initial;
+  }
+}

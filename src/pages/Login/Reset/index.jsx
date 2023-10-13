@@ -9,7 +9,7 @@ const ResetPassword = () => {
   }
 
   return (
-    <section>
+    <section className="anime-left">
       <Title>Resetar a senha</Title>
       <form onSubmit={handleSubmit}>
         <Input label={"Nova senha"} name={"password"} type={"password"}/>

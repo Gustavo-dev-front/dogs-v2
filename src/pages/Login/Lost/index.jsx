@@ -9,7 +9,7 @@ const LostPassword = () => {
   }
 
   return (
-    <section>
+    <section className="anime-left">
       <Title>Perdeu a senha?</Title>
       <form onSubmit={handleSubmit}>
         <Input label={"E-mail / Usuário"} name={"username"} type={"text"} />

@@ -9,7 +9,7 @@ const Register = () => {
   }
 
   return (
-    <section>
+    <section className="anime-left">
       <Title>Cadastre-se</Title>
       <form onSubmit={handleSubmit}>
         <Input type={"text"} name={"username"} label={"Usuário"} />
