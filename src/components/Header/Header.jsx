@@ -7,10 +7,10 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.container}>
-        <Link to={"/feed"}>
+        <Link to={"/"}>
           <img src={logo} alt="logo" />
         </Link>
-        <Link to={"/"}>Login / Criar</Link>
+        <Link to={"/login"}>Login / Criar</Link>
       </nav>
     </header>
   );

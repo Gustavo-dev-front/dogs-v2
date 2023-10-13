@@ -1,5 +1,24 @@
-.login {
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+}
+
+.container::before {
+  content: "";
+  display: block;
+  background: url(../../assets/login.jpg) no-repeat center center / cover;
+  height: 100vh;
+  border-radius: 0.25rem;
+}
+
+.container>* {
   margin-top: 2rem;
+}
+
+.login {
+  padding: 0 1rem;
 }
 
 .link {
@@ -36,7 +55,18 @@
   border-radius: .25rem;
 }
 
-.subtitle ~ p {
+.subtitle~p {
   color: #666;
   margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 40rem) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .container::before {
+    max-height: 200px;
+  }
+
 }

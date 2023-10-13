@@ -8,6 +8,10 @@
   background-color: #fff;
 }
 
+.header~* {
+  margin-top: 4rem;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
