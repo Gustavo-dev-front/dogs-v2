@@ -5,7 +5,7 @@ const useFetch = () => {
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
-  async function request(url, options) {
+  const request = React.useCallback(async (url, options) => {
     setLoading(true);
     setError(false);
 
@@ -14,7 +14,7 @@ const useFetch = () => {
     try {
       response = await fetch(url, options);
       json = await response.json();
-      if (!response.ok) throw new Error("Usuário ou senha incorretos.");
+      if (!response.ok) throw new Error(json.message);
     } catch (error) {
       setError(error.message);
       json = null;
@@ -22,9 +22,9 @@ const useFetch = () => {
       setData(json);
       setLoading(false);
     }
-
+    
     return { response, json };
-  }
+  }, []);
 
   return {
     data,

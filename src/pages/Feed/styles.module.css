@@ -1,0 +1,46 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.feed ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.feed ul li {
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.feed ul li:nth-child(2) {
+  grid-column: 2/-1;
+  grid-row: span 2;
+}
+
+.feed ul li span {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  opacity: 0;
+  transition: opacity .3s linear;
+}
+
+.feed ul li span::before {
+  content: url(../../assets/visualizacao.svg);
+  display: block;
+}
+
+.feed ul li:hover span {
+  opacity: 1;
+}
