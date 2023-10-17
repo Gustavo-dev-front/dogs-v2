@@ -6,27 +6,26 @@ import styles from "./styles.module.css";
 import Title from "../../components/Title/Title";
 import useForm from "../../hooks/useForm";
 import { TOKEN_POST } from "../../api_endpoints";
+import useFetch from "../../hooks/useFetch";
+import Error from "../../components/Helper/Error/Error";
 
 const Login = () => {
+  const { data, error, loading, request } = useFetch();
   const username = useForm();
   const password = useForm();
-
-  async function fetchAPI() {
-    const { url, options } = TOKEN_POST({
-      username: username.value,
-      password: password.value,
-    });
-    const response = await fetch(url, options);
-    const json = await response.json();
-    console.log(response, json);
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
     const userIsValid = username.validate();
     const passwordIsValid = password.validate();
 
-    if (userIsValid && passwordIsValid) fetchAPI();
+    if (userIsValid && passwordIsValid) {
+      const { url, options } = TOKEN_POST({
+        username: username.value,
+        password: password.value,
+      });
+      request(url, options);
+    }
   }
 
   return (
@@ -45,7 +44,12 @@ const Login = () => {
           type={"password"}
           {...password}
         />
-        <Button>Entrar</Button>
+        {loading ? (
+          <Button disabled>Entrando...</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
+        {error ? <Error error={error} /> : null}
         <Link
           style={{ margin: "2rem 0" }}
           className={styles.link}
