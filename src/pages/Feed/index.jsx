@@ -9,7 +9,7 @@ const Feed = () => {
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
-    const { url, options } = PHOTOS_GET(1, 6, 0);
+    const { url, options } = PHOTOS_GET({page: 1, total: 6, user: 0});
     request(url, options);
   }, [request]);
 
