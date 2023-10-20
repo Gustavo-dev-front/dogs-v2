@@ -1,31 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Title from "../../components/Title/Title";
+import Error from "../../components/Helper/Error/Error";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { Link } from "react-router-dom";
-import styles from "./styles.module.css";
-import Title from "../../components/Title/Title";
 import useForm from "../../hooks/useForm";
-import { TOKEN_POST } from "../../api_endpoints";
 import useFetch from "../../hooks/useFetch";
-import Error from "../../components/Helper/Error/Error";
+import { UserContext } from "../User/context";
+import styles from "./styles.module.css";
 
 const Login = () => {
-  const { data, error, loading, request } = useFetch();
+  const { login, error, loading } = React.useContext(UserContext);
   const username = useForm();
   const password = useForm();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const userIsValid = username.validate();
     const passwordIsValid = password.validate();
 
-    if (userIsValid && passwordIsValid) {
-      const { url, options } = TOKEN_POST({
-        username: username.value,
-        password: password.value,
-      });
-      request(url, options);
-    }
+    if (userIsValid && passwordIsValid) login(username.value, password.value);
   }
 
   return (
