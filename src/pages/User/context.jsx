@@ -13,7 +13,8 @@ const UserContextProvider = ({ children }) => {
   const getUser = React.useCallback( async (token) => {
       const { url, options } = USER_GET(token);
       request(url, options);
-    },[request]);
+      navigate("/conta");
+    },[request, navigate]);
 
   async function login(username, password) {
     const { url, options } = TOKEN_POST({ username, password });
