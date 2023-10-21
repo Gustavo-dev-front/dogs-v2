@@ -16,7 +16,6 @@ const Feed = () => {
   if (loading) return <Loading />;
   if (error) return <Error error={error} />;
   if (!data) return null;
-  console.log(data);
   return (
     <section className={`${styles.container} ${styles.feed}`}>
       <ul>
