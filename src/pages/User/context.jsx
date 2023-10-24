@@ -6,31 +6,39 @@ import { useNavigate } from "react-router-dom";
 export const UserContext = React.createContext();
 
 const UserContextProvider = ({ children }) => {
-  const { data, error, loading, request } = useFetch();
+  const [user, setUser] = React.useState(null);
+  const { error, loading, request } = useFetch();
   const navigate = useNavigate();
   const token = window.localStorage.getItem("token");
 
-  const getUser = React.useCallback( async (token) => {
+  const getUser = React.useCallback(
+    async (token) => {
       const { url, options } = USER_GET(token);
-      request(url, options);
+      const { json } = await request(url, options);
+      setUser(json);
+      window.localStorage.setItem("token", token);
       navigate("/conta");
-    },[request, navigate]);
+    },[navigate, request]);
+
+  const autoLogin = React.useCallback(
+    async (token) => {
+      const { url, options } = TOKEN_VALIDATE_POST(token);
+      const { response } = await request(url, options);
+      if (response.ok) getUser(token);
+    },[request, getUser]);
 
   async function login(username, password) {
     const { url, options } = TOKEN_POST({ username, password });
     const { json, response } = await request(url, options);
-    if (response.ok) {
-      window.localStorage.setItem("token", json.token);
-      navigate("/conta");
-    }
+    if (response.ok) getUser(json.token);
   }
 
   React.useEffect(() => {
-    if (token) getUser(token);
-  }, [getUser, token]);
+    if (token) autoLogin(token);
+  }, [autoLogin, token]);
 
   return (
-    <UserContext.Provider value={{ login, data, error, loading }}>
+    <UserContext.Provider value={{ login, user, error, loading }}>
       {children}
     </UserContext.Provider>
   );

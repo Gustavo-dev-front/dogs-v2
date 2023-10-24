@@ -19,15 +19,9 @@ const UserRoutes = () => {
   return (
     <section className={`container`}>
       <nav>
-        <NavLink to={"/conta"} end>
-          MINHA CONTA
-        </NavLink>
-        <NavLink to={"estatisticas"} end>
-          ESTATÍSTICAS
-        </NavLink>
-        <NavLink to={"postar"} end>
-          POSTAR
-        </NavLink>
+        <NavLink to={"/"} end >MINHA CONTA</NavLink>
+        <NavLink to={"estatisticas"}>ESTATÍSTICAS</NavLink>
+        <NavLink to={"postar"}>POSTAR</NavLink>
       </nav>
       <Title>{title}</Title>
       <Routes>

@@ -5,20 +5,13 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../pages/User/context";
 
 const Header = () => {
-  const { data } = useContext(UserContext);
-  const name = data?.user_nicename || data?.username;
+  const { user } = useContext(UserContext);
 
   return (
     <header className={styles.header}>
       <nav className={styles.container}>
-        <Link to={"/"}>
-          <img src={logo} alt="logo" />
-        </Link>
-        {data ? (
-          <Link to={"/conta"}>{name}</Link>
-        ) : (
-          <Link to={"/login"}>Login / Criar</Link>
-        )}
+        <Link to={"/"}><img src={logo} alt="logo"/></Link>
+        {user ? <Link to={"/conta"}>{user.username}</Link> : <Link to={"/login"}>Login / Criar</Link>}
       </nav>
     </header>
   );
