@@ -5,7 +5,6 @@ import Error from "../../components/Helper/Error/Error";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import useForm from "../../hooks/useForm";
-import useFetch from "../../hooks/useFetch";
 import styles from "./styles.module.css";
 
 const Login = () => {
@@ -24,29 +23,10 @@ const Login = () => {
     <section className={`anime-left ${styles.login}`}>
       <Title>Login</Title>
       <form onSubmit={handleSubmit}>
-        <Input
-          label={"Usuário"}
-          name={"username"}
-          type={"text"}
-          {...username}
-        />
-        <Input
-          label={"Senha"}
-          name={"password"}
-          type={"password"}
-          {...password}
-        />
-        {loading ? (
-          <Button disabled>Entrando...</Button>
-        ) : (
-          <Button>Entrar</Button>
-        )}
-        {error ? <Error error={error} /> : null}
-        <Link
-          style={{ margin: "2rem 0" }}
-          className={styles.link}
-          to={"perdeu-a-senha"}
-        >
+        <Input label={"Usuário"} name={"username"} type={"text"} {...username}/>
+        <Input label={"Senha"} name={"password"} type={"password"} {...password}/>
+        <Button>Entrar</Button>
+        <Link style={{ margin: "2rem 0" }} className={styles.link} to={"perdeu-a-senha"}>
           Perdeu a senha?
         </Link>
         <h2 className={styles.subtitle}>Cadastre-se</h2>

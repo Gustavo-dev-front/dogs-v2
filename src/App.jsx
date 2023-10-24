@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import LoginRoutes from "./pages/Login/routes";
 import UserContextProvider from "./pages/User/context";
 import UserRoutes from "./pages/User/routes";
+import ProtectedRoute from "./pages/User/ProtectedRoute";
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login/*" element={<LoginRoutes />} />
-              <Route path="/conta/*" element={<UserRoutes />} />
+              <Route path="/conta/*" element={<ProtectedRoute defaultPath={"/login"}><UserRoutes /></ProtectedRoute>} />
             </Routes>
           </main>
           <Footer />
