@@ -6,11 +6,9 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import useForm from "../../hooks/useForm";
 import useFetch from "../../hooks/useFetch";
-import { UserContext } from "../User/context";
 import styles from "./styles.module.css";
 
 const Login = () => {
-  const { login, error, loading } = React.useContext(UserContext);
   const username = useForm();
   const password = useForm();
 
@@ -19,7 +17,7 @@ const Login = () => {
     const userIsValid = username.validate();
     const passwordIsValid = password.validate();
 
-    if (userIsValid && passwordIsValid) login(username.value, password.value);
+    if (userIsValid && passwordIsValid);
   }
 
   return (
