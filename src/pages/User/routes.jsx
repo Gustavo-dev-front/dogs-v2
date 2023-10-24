@@ -4,6 +4,8 @@ import Title from "../../components/Title/Title";
 import Statistics from "./Statistics/index";
 import Post from "./Post/index";
 import Feed from "../Feed/index";
+import UserHeader from "./Header/UserHeader";
+import styles from "./styles.module.css";
 
 const UserRoutes = () => {
   const [title, setTitle] = React.useState(null);
@@ -13,17 +15,15 @@ const UserRoutes = () => {
     const { pathname } = location;
     if (pathname.includes("estatisticas")) setTitle("Estatísticas");
     else if (pathname.includes("postar")) setTitle("Poste sua foto");
-    else setTitle("Minha conta");
+    else setTitle("Minhas postagens");
   }, [location]);
 
   return (
     <section className={`container`}>
-      <nav>
-        <NavLink to={"/conta"} end >MINHA CONTA</NavLink>
-        <NavLink to={"estatisticas"}>ESTATÍSTICAS</NavLink>
-        <NavLink to={"postar"}>POSTAR</NavLink>
-      </nav>
-      <Title>{title}</Title>
+      <header className={styles.header}>
+        <Title>{title}</Title>
+        <UserHeader />
+      </header>
       <Routes>
         <Route path={"/"} element={<Feed />} />
         <Route path={"estatisticas"} element={<Statistics />} />
