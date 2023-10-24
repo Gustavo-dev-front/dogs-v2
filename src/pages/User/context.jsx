@@ -10,6 +10,13 @@ const UserContextProvider = ({ children }) => {
   const [userData, setUserData] = React.useState(null);
   const { loading, error, request } = useFetch();
   const navigate = useNavigate();
+  const token = window.localStorage.getItem("token");
+
+  function userLogout() {
+    window.localStorage.removeItem("token");
+    setLogged(false);
+    setUserData(null);
+  }
 
   async function getUser(token) {
     const { url, options } = USER_GET(token);
