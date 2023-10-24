@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Title from "../../components/Title/Title";
 import Error from "../../components/Helper/Error/Error";
@@ -6,17 +6,19 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import useForm from "../../hooks/useForm";
 import styles from "./styles.module.css";
+import { UserContext } from "../User/context";
 
 const Login = () => {
   const username = useForm();
   const password = useForm();
+  const {error, loading, login} = useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
     const userIsValid = username.validate();
     const passwordIsValid = password.validate();
 
-    if (userIsValid && passwordIsValid);
+    if (userIsValid && passwordIsValid) login(username, password);
   }
 
   return (
@@ -25,7 +27,8 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <Input label={"Usuário"} name={"username"} type={"text"} {...username}/>
         <Input label={"Senha"} name={"password"} type={"password"} {...password}/>
-        <Button>Entrar</Button>
+        {loading ? <Button disabled>Entrando...</Button> : <Button>Entrar</Button>}
+        {error && <Error error={error}/>}
         <Link style={{ margin: "2rem 0" }} className={styles.link} to={"perdeu-a-senha"}>
           Perdeu a senha?
         </Link>
