@@ -4,8 +4,9 @@ import Title from "../../components/Title/Title";
 import Statistics from "./Statistics/index";
 import Post from "./Post/index";
 import Feed from "../Feed/index";
-import UserHeader from "./Header/UserHeader";
+import UserHeaderNav from "./Header/UserHeaderNav";
 import styles from "./styles.module.css";
+
 
 const UserRoutes = () => {
   const [title, setTitle] = React.useState(null);
@@ -22,7 +23,7 @@ const UserRoutes = () => {
     <section className={`container`}>
       <header className={styles.header}>
         <Title>{title}</Title>
-        <UserHeader />
+        <UserHeaderNav />
       </header>
       <Routes>
         <Route path={"/"} element={<Feed />} />

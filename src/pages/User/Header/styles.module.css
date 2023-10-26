@@ -1,4 +1,38 @@
-.nav {
+.nav ul {
   display: flex;
   gap: 1rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 4px;
+  padding: .5rem;
+  cursor: pointer;
+  transition: .3s;
+  border: 1px solid transparent;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.navItem:hover {
+  background-color: #fff;
+  border-color: #fb1;
+  box-shadow: 0 0 0 3px #eee;
+}
+
+.navItem:global(.active) {
+  border-color: #fb1;
+  box-shadow: 0 0 0 3px #fea;
+  background-color: #fff;
+}
+
+svg.icons {
+  font-size: 1.5rem;
+  fill: #333;
+}
+
+.navItemDescription {
+  display: none;
 }
