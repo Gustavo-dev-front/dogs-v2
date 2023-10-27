@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { UserContext } from "../context";
 import styles from "./styles.module.css";
 import { BiExit, BiImageAdd, BiBarChart, BiCategory, BiMenu } from "react-icons/bi";
@@ -7,6 +7,11 @@ import { BiExit, BiImageAdd, BiBarChart, BiCategory, BiMenu } from "react-icons/
 const UserHeaderNav = () => {
   const { userLogout } = React.useContext(UserContext);
   const [mobile, setMobile] = React.useState(false);
+  const location = useLocation();
+
+  React.useEffect(() => {
+    setMobile(false);
+  },[location]);
 
   function handleMobile() {
     setMobile((previous) => !previous);
