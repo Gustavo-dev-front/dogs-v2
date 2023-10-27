@@ -35,6 +35,33 @@
   background-color: #fff;
 }
 
+.mobileToggler {
+  width: 42px;
+  height: 42px;
+  padding: 0 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.mobileToggler::after {
+  content: "";
+  display: block;
+  width: 1.2rem;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  box-shadow: 0 6px currentColor, 0 -6px currentColor;
+  transition: all .2s;
+}
+
+.active.mobileToggler::after {
+  transform: rotate(-90deg);
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 8px, 0 -8px;
+}
+
 svg.icons {
   font-size: 1.5rem;
   fill: #333;
@@ -47,13 +74,12 @@ svg.icons {
 
   .mobileToggler {
     display: none;
-    width: max-content;
   }
 }
 
 @media only screen and (max-width: 45rem) {
   .mobileToggler {
-    display: block;
+    display: flex;
   }
 
   .nav ul {

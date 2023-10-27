@@ -20,7 +20,7 @@ const UserHeaderNav = () => {
   return (
     <nav className={styles.nav}>
       <span className={`${styles.mobileToggler} ${styles.navItem}`} onClick={handleMobile}>
-        <BiMenu className={`${styles.icons} ${styles.mobileToggler}`} />
+        <span className={`${mobile ? `${styles.active}` : ""} ${styles.icons} ${styles.mobileToggler}`} />
       </span>
       <ul className={mobile ? `${styles.active}` : ""}>
         <li>
