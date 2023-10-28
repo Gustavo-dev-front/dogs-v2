@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Title from "../../components/Title/Title";
 import Statistics from "./Statistics/index";
 import Post from "./Post/index";
@@ -8,9 +8,9 @@ import UserHeaderNav from "./Header/UserHeaderNav";
 import styles from "./styles.module.css";
 import Modal from "../../components/Modal";
 
-
 const UserRoutes = () => {
   const [title, setTitle] = React.useState(null);
+
   const location = useLocation();
 
   React.useEffect(() => {
@@ -21,8 +21,6 @@ const UserRoutes = () => {
   }, [location]);
 
   return (
-    <>
-    {/* <Modal></Modal> */}
     <section className={`container`}>
       <header className={styles.header}>
         <Title>{title}</Title>
@@ -34,7 +32,6 @@ const UserRoutes = () => {
         <Route path={"postar"} element={<Post />} />
       </Routes>
     </section>
-    </>
   );
 };
 
