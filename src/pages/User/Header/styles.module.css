@@ -90,7 +90,7 @@ svg.icons {
     width: max-content;
     border-radius: 4px;
     overflow: hidden;
-    z-index: 2;
+    z-index: 1;
     position: absolute;
     top: 50px;
     background-color: #fff;

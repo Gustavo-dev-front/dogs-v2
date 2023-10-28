@@ -6,6 +6,7 @@ import Post from "./Post/index";
 import Feed from "../Feed/index";
 import UserHeaderNav from "./Header/UserHeaderNav";
 import styles from "./styles.module.css";
+import Modal from "../../components/Modal";
 
 
 const UserRoutes = () => {
@@ -20,6 +21,8 @@ const UserRoutes = () => {
   }, [location]);
 
   return (
+    <>
+    {/* <Modal></Modal> */}
     <section className={`container`}>
       <header className={styles.header}>
         <Title>{title}</Title>
@@ -31,6 +34,7 @@ const UserRoutes = () => {
         <Route path={"postar"} element={<Post />} />
       </Routes>
     </section>
+    </>
   );
 };
 
