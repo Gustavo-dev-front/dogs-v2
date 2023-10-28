@@ -2,6 +2,7 @@
   font-family: var(--type-second);
   font-size: 3rem;
   position: relative;
+  caret-color: transparent;
 }
 
 .title::before {

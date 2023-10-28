@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { UserContext } from "../context";
-import styles from "./styles.module.css";
 import { BiExit, BiImageAdd, BiBarChart, BiCategory, BiMenu } from "react-icons/bi";
+import styles from "./styles.module.css";
 
 const UserHeaderNav = () => {
   const { userLogout } = React.useContext(UserContext);
