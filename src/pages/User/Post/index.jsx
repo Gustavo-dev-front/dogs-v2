@@ -29,7 +29,7 @@ const Post = () => {
     form_data.append("peso", dog_weight);
     form_data.append("idade", dog_age);
     const {url, options} = PHOTO_POST(form_data, token);
-    const {response, json} = await request(url, options);
+    const {response} = await request(url, options);
     if (response.ok) navigate("/conta");
   }
 
