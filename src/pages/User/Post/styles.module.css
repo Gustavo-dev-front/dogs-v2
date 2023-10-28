@@ -13,6 +13,10 @@
   grid-row: span 20;
 }
 
+.post input[type="file"] {
+  margin-bottom: 1rem;
+}
+
 @media only screen and (max-width: 40rem) {
   .post {
     display: grid;
