@@ -10,6 +10,12 @@
 
 .image {
   background-color: #fb1;
+  height: 100%;
+}
+
+.image img {
+  object-fit: cover;
+  height: 100%;
 }
 
 .content {
@@ -56,4 +62,14 @@
   content: "";
   border-right: 2px solid black;
   margin-right: 5px;
+}
+
+@media only screen and (max-width: 45rem) {
+  .photo {
+    grid-template-columns: 1fr;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 4px;
+    overflow-y: auto;
+  }
 }

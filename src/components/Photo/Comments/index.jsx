@@ -9,6 +9,14 @@ const Comments = (props) => {
   const [comment, setComment] = React.useState();
   const [comments, setComments] = React.useState(props.comments);
   const { error, request } = useFetch();
+  const comment_box = React.useRef();
+
+  React.useEffect(()=> {
+    const {scrollHeight} = comment_box.current;
+    const {clientHeight} = comment_box.current;
+    const distanceScroll = scrollHeight - clientHeight;
+    comment_box.current.scrollTo({top: distanceScroll, left: 0, behavior: "smooth"});
+  }, [comments]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -20,7 +28,7 @@ const Comments = (props) => {
 
   return (
     <div className={styles.comments}>
-      <ul className={styles.messages}>
+      <ul className={styles.messages} ref={comment_box}>
         {comments.map(({ comment_ID, comment_author, comment_content }) => {
           return (
             <li key={comment_ID}>

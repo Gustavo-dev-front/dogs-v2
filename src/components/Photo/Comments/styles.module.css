@@ -7,7 +7,7 @@
 
 .messages {
   overflow-y: auto;
-  max-height: 300px;
+  height: 300px;
 }
 
 .messages li {
@@ -34,6 +34,7 @@
   background-color: #eee;
   resize: none;
   transition: .3s;
+  width: 100%;
 }
 
 .send textarea:hover,
@@ -62,5 +63,12 @@
 @keyframes latir {
   to {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 45rem) {
+  .messages {
+    height: initial;
+    max-height: 300px;
   }
 }
