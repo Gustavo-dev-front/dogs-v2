@@ -4,8 +4,10 @@ import useFetch from "../../hooks/useFetch";
 import Loading from "../Helper/Loading/Loading";
 import Title from "../../components/Title/Title";
 import { PHOTO_GET } from "../../api_endpoints";
-import styles from "./styles.module.css";
+import Image from "../Image/index";
 import Comments from "./Comments/index";
+import styles from "./styles.module.css";
+
 
 const Photo = ({ photoId }) => {
   const { data, loading, error, request } = useFetch();
@@ -24,7 +26,7 @@ const Photo = ({ photoId }) => {
   return (
     <article className={styles.photo}>
       <div className={styles.image}>
-        <img src={data.photo.src} alt={data.photo.title} />
+        <Image src={data.photo.src} alt={data.photo.title} />
       </div>
       <div className={styles.content}>
         <div className={styles.info}>

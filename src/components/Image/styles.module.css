@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+}
+
+.wrapper img {
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.wrapper .skeleton {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(90deg, #eee 0px, #fff 50%, #eee 100%);
+  background-size: 200%;
+  z-index: 1;
+  animation: skeleton 1s ease infinite;
+}
+
+@keyframes skeleton {
+  to {
+    background-position: -200%;
+  }
+}
