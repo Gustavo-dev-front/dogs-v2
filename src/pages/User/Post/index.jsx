@@ -25,9 +25,9 @@ const Post = () => {
   async function postPhoto() {
     const form_data = new FormData();
     form_data.append("img", image.raw);
-    form_data.append("nome", dog_name);
-    form_data.append("peso", dog_weight);
-    form_data.append("idade", dog_age);
+    form_data.append("nome", dog_name.value);
+    form_data.append("peso", dog_weight.value);
+    form_data.append("idade", dog_age.value);
     const {url, options} = PHOTO_POST(form_data, token);
     const {response} = await request(url, options);
     if (response.ok) navigate("/conta");
