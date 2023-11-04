@@ -16,7 +16,7 @@ const LoginRoutes = () => {
     <section className={`container ${styles.container}`}>
       <Routes>
         <Route path={"/"} element={<Login />} />
-        <Route path={"cadastro"} element={<Register />} />
+        <Route path={"/cadastro"} element={<Register />} />
         <Route path={"/perdeu-a-senha"} element={<LostPassword />} />
         <Route path={"/resetar-a-senha"} element={<ResetPassword />} />
       </Routes>

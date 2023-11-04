@@ -6,10 +6,11 @@ import Post from "./Post/index";
 import Feed from "../Feed/index";
 import UserHeaderNav from "./Header/UserHeaderNav";
 import styles from "./styles.module.css";
-import Modal from "../../components/Modal";
+import { UserContext } from "./context";
 
 const UserRoutes = () => {
   const [title, setTitle] = React.useState(null);
+  const { userData } = React.useContext(UserContext);
 
   const location = useLocation();
 
@@ -27,9 +28,9 @@ const UserRoutes = () => {
         <UserHeaderNav />
       </header>
       <Routes>
-        <Route path={"/"} element={<Feed />} />
-        <Route path={"estatisticas"} element={<Statistics />} />
-        <Route path={"postar"} element={<Post />} />
+        <Route path={"/"} element={<Feed userId={userData.id} />} />
+        <Route path={"/estatisticas"} exact element={<Statistics />} />
+        <Route path={"/postar"} exact element={<Post />} />
       </Routes>
     </section>
   );

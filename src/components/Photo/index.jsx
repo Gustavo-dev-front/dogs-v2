@@ -6,11 +6,13 @@ import Title from "../../components/Title/Title";
 import { PHOTO_GET } from "../../api_endpoints";
 import Image from "../Image/index";
 import Comments from "./Comments/index";
+import Delete from "./Delete";
+import { UserContext } from "../../pages/User/context";
 import styles from "./styles.module.css";
-
 
 const Photo = ({ photoId }) => {
   const { data, loading, error, request } = useFetch();
+  const username = React.useContext(UserContext).userData?.username;
 
   React.useEffect(() => {
     async function getPhoto() {
@@ -30,7 +32,11 @@ const Photo = ({ photoId }) => {
       </div>
       <div className={styles.content}>
         <div className={styles.info}>
-          <span className={styles.author}>@{data.photo.author}</span>
+          {username === data.photo.author ? (
+            <Delete id={data.photo.id} />
+          ) : (
+            <span className={styles.author}>@{data.photo.author}</span>
+          )}
           <span className={styles.access}>{data.photo.acessos}</span>
         </div>
         <div className={styles.details}>
@@ -38,7 +44,7 @@ const Photo = ({ photoId }) => {
           <span>{data.photo.peso} kg</span>
           <span>{data.photo.idade} anos</span>
         </div>
-        <Comments comments={data.comments} id={data.photo.id}/>
+        <Comments comments={data.comments} id={data.photo.id} />
       </div>
     </article>
   );

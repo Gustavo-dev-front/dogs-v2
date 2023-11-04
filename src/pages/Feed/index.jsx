@@ -2,21 +2,21 @@ import React from "react";
 import Loading from "../../components/Helper/Loading/Loading";
 import Error from "../../components/Helper/Error/Error";
 import useFetch from "../../hooks/useFetch";
-import { PHOTOS_GET, PHOTO_GET } from "../../api_endpoints";
+import { PHOTOS_GET } from "../../api_endpoints";
 import Modal from "../../components/Modal";
 import Photo from "../../components/Photo/index";
 import Image from "../../components/Image/index";
 import styles from "./styles.module.css";
 
-const Feed = () => {
+const Feed = ({ userId }) => {
   const { data, loading, error, request } = useFetch();
   const [photoId, setPhotoId] = React.useState(null);
   const [modalDisplay, setModalDisplay] = React.useState(false);
 
   React.useEffect(() => {
-    const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
+    const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: userId});
     request(url, options);
-  }, [request]);
+  }, [request, userId]);
 
   function handleModal(id) {
     setModalDisplay(true);

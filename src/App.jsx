@@ -18,7 +18,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login/*" element={<LoginRoutes />} />
-              <Route path="/conta/*" element={<ProtectedRoute defaultPath={"/login"}><UserRoutes /></ProtectedRoute>} />
+              <Route path="/conta/*" element={<ProtectedRoute><UserRoutes /></ProtectedRoute>} />
             </Routes>
           </main>
           <Footer />
