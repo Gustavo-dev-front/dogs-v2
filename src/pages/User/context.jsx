@@ -1,6 +1,7 @@
 import React from "react";
 import useFetch from "../../hooks/useFetch";
 import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from "../../api_endpoints";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = React.createContext();
 
@@ -9,6 +10,7 @@ const UserContextProvider = ({ children }) => {
   const [userData, setUserData] = React.useState(null);
   const { loading, error, request } = useFetch();
   const token = window.localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const getUser = React.useCallback(async (token)=> {
     const { url, options } = USER_GET(token);
@@ -32,6 +34,7 @@ const UserContextProvider = ({ children }) => {
     window.localStorage.removeItem("token");
     setLogged(false);
     setUserData(null);
+    navigate("/login");
   }
 
   async function login(username, password) {
