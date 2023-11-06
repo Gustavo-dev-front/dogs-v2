@@ -8,15 +8,15 @@ import Photo from "../../components/Photo/index";
 import Image from "../../components/Image/index";
 import styles from "./styles.module.css";
 
-const Feed = ({ userId }) => {
+const Feed = ({ user }) => {
   const { data, loading, error, request } = useFetch();
   const [photoId, setPhotoId] = React.useState(null);
   const [modalDisplay, setModalDisplay] = React.useState(false);
 
   React.useEffect(() => {
-    const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: userId});
+    const { url, options } = PHOTOS_GET({ page: 1, total: 6, user});
     request(url, options);
-  }, [request, userId]);
+  }, [request, user]);
 
   function handleModal(id) {
     setModalDisplay(true);

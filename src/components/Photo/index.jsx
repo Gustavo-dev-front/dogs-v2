@@ -9,6 +9,7 @@ import Comments from "./Comments/index";
 import Delete from "./Delete";
 import { UserContext } from "../../pages/User/context";
 import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
 
 const Photo = ({ photoId }) => {
   const { data, loading, error, request } = useFetch();
@@ -35,7 +36,7 @@ const Photo = ({ photoId }) => {
           {username === data.photo.author ? (
             <Delete id={data.photo.id} />
           ) : (
-            <span className={styles.author}>@{data.photo.author}</span>
+            <Link className={styles.author} to={`/perfil/${data.photo.author}`}>@{data.photo.author}</Link>
           )}
           <span className={styles.access}>{data.photo.acessos}</span>
         </div>

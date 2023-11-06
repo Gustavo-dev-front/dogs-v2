@@ -28,7 +28,7 @@ const UserRoutes = () => {
         <UserHeaderNav />
       </header>
       <Routes>
-        <Route path={"/"} element={<Feed userId={userData.id} />} />
+        <Route path={"/"} element={<Feed user={userData.username} />} />
         <Route path={"/estatisticas"} exact element={<Statistics />} />
         <Route path={"/postar"} exact element={<Post />} />
       </Routes>
