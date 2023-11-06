@@ -45,7 +45,7 @@ const Post = () => {
   }
 
   return (
-    <section className={styles.post}>
+    <section className={`${styles.post} anime-left`}>
       <form onSubmit={handleSubmit}>
         <Input label={"Nome"} name={"nome"} type={"text"} {...dog_name} />
         <Input label={"Peso"} name={"peso"} type={"text"} {...dog_weight} />

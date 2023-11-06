@@ -31,7 +31,7 @@ const Feed = ({ user }) => {
       <Modal active={modalDisplay} setModalDisplay={setModalDisplay}>
         <Photo photoId={photoId} />
       </Modal>
-      <section className={`${styles.container} ${styles.feed}`}>
+      <section className={`${styles.container} ${styles.feed} anime-left`}>
         <ul>
           {data.map(({ id, acessos, src, title }) => (
             <li key={id} onClick={() => handleModal(id)}>
