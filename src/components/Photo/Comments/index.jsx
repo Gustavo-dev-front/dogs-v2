@@ -3,6 +3,7 @@ import { ReactComponent as Enviar } from "../../../assets/enviar.svg";
 import useFetch from "../../../hooks/useFetch";
 import { COMMENT_POST } from "../../../api_endpoints";
 import Error from "../../Helper/Error/Error";
+import { UserContext } from "../../../pages/User/context";
 import styles from "./styles.module.css";
 
 const Comments = (props) => {
@@ -10,12 +11,17 @@ const Comments = (props) => {
   const [comments, setComments] = React.useState(props.comments);
   const { error, request } = useFetch();
   const comment_box = React.useRef();
+  const { logged } = React.useContext(UserContext);
 
-  React.useEffect(()=> {
-    const {scrollHeight} = comment_box.current;
-    const {clientHeight} = comment_box.current;
+  React.useEffect(() => {
+    const { scrollHeight } = comment_box.current;
+    const { clientHeight } = comment_box.current;
     const distanceScroll = scrollHeight - clientHeight;
-    comment_box.current.scrollTo({top: distanceScroll, left: 0, behavior: "smooth"});
+    comment_box.current.scrollTo({
+      top: distanceScroll,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [comments]);
 
   async function handleSubmit(e) {
@@ -38,18 +44,20 @@ const Comments = (props) => {
           );
         })}
       </ul>
-      <div className={styles.send}>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            placeholder="Comente..."
-            value={comment}
-            onChange={({ target }) => setComment(target.value)}
-          ></textarea>
-          <button>
-            <Enviar />
-          </button>
-        </form>
-      </div>
+      {logged && (
+        <div className={styles.send}>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              placeholder="Comente..."
+              value={comment}
+              onChange={({ target }) => setComment(target.value)}
+            ></textarea>
+            <button>
+              <Enviar />
+            </button>
+          </form>
+        </div>
+      )}
       {error && <Error error={error} />}
     </div>
   );
