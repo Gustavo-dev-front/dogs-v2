@@ -14,7 +14,3 @@
 .statistics div:first-child {
   grid-column: 1/-1;
 }
-
-.statistics div:not(:first-child) {
-  min-height: 100px;
-}
